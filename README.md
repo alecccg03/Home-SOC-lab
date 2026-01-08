@@ -1,8 +1,10 @@
 # Home-SOC-lab
-Conducted separate network-level and log-based attack simulations to analyze detection capabilities across different sources
+Conducted separate network-level and log-based attack simulations to analyze detection capabilities across different sources.
 
 📌 Project Overview
 This lab demonstrates the end-to-end process of simulating cyber attacks, capturing telemetry, and analyzing data within a Security Operations Center (SOC) environment. I performed various network-level and host-based attacks against a Windows target, ingested the logs into Splunk, and used Wireshark for deep packet inspection.
+
+Network traffic analysis and SIEM detection were conducted in separate attack runs to focus on tool-specific visibility and detection capabilities.
 
 🛠️ Toolset
 
@@ -14,53 +16,38 @@ Network Analysis: Wireshark, TCPDump
 
 Attack Tools: Nmap, Curl, SSH, ICMP
 
-Environment: VMware/VirtualBox (Isolated Lab Network)
+Environment: VMware/VirtualBox (Isolated Lab Network) - Kali Linux VM (attacker), Windows VM (target)
 
 🛡️ Analysis Scenarios
 
-1. Nmap Stealth (SYN) Scan
+1. Nmap (SYN) Scan
    
-The Attack: Executed a SYN scan (nmap -sS) to identify open ports without completing the three-way handshake.
+Performed a SYN scan using nmap and analyzed the traffic in Wireshark.
 
-Wireshark Analysis: Observed a high volume of SYN packets followed by RST packets from the attacker to the target.
-
-Splunk Detection: Created a dashboard to visualize spikes in destination ports per source IP.
-
-Query: index=sysmon EventCode=3 | stats dc(dest_port) by src_ip | where 'dc(dest_port)' > 50
-
-2. Failed SSH Brute Force
+2. Nmap Port Scan
    
-The Attack: Simulated connection attempts to port 22 on a closed service to observe "connection reset" behavior.
-
-Key Finding: Confirmed that failed connections to closed ports generate repetitive RST, ACK flags.
-
-Documentation: Verified that while a single failure is low-noise, automated attempts generate hundreds of logs in seconds.
+Performed a scan across the first 1000 ports to discover open services and analyzed in Wireshark.
 
 3. Web & ICMP Enumeration
    
-The Attack: Used curl for web directory discovery and ping for host discovery.
+Performed web directory and host discovery using curl and ping.
 
-Analysis: Captured the 84-byte ICMP packets (Linux default) and analyzed the CommandLine arguments in Sysmon Event ID 1 to identify the specific curl strings used.
+4. Authentication attempts
+
+Performed two separate attacks trying to connect to the target host over ssh. I analyzed the traffic in Wireshark and created visualizations in Splunk.
 
 📊 Dashboards & Visualizations
 
-I developed a Splunk dashboard to provide "at-a-glance" situational awareness:
-
-Top 10 Scanned Ports: Visualizing where the majority of SYN packets are landing.
-
-Command Line Activity: Tracking suspicious process arguments (e.g., -enc, curl, nmap).
-
-Network Map: Correlating Source IPs with destination port frequency.
+Developed a Splunk dashboard with multiple visualizations to better understand and further analyze logs from simulated attacks.
 
 💡 Key Learnings
-Protocol Differences: Deepened understanding of why SSH/HTTP require TCP (reliability) while diagnostics use ICMP (Layer 3).
+Protocol Differences: This lab reinforced the differences between connection-oriented and connectionless protocols by analyzing TCP handshakes, port scans and encrypted SSH sessions at the packet level.
 
-Log Ingestion: Configured the Splunk Universal Forwarder and inputs.conf to streamline Sysmon data flow.
+Log Ingestion: Gained hands-on experience analyzing Windows authentication and firewall logs in Splunk to detect brute-force behavior and understand how endpoint logs reflect attacker activity.
 
-Data Sanitization: Practiced professional OPSEC by identifying and masking internal IP structures in reports.
+Visibility Gap: This lab highlighted the importance of defense-in-depth by demonstrating how network traffic, endpoint logs and firewall telemetry provide different views of malicious activity.
 
 🚀 How to Use
-Sysmon Config: Find my sysmon-config.xml in the /configs folder.
 
 Splunk Queries: Check the queries.md file for all SPL used in the visualizations.
 
