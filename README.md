@@ -1,7 +1,9 @@
 # Home-SOC-lab
+
 Conducted separate network-level and log-based attack simulations to analyze detection capabilities across different sources.
 
 📌 Project Overview
+
 This lab demonstrates the end-to-end process of simulating cyber attacks, capturing telemetry, and analyzing data within a Security Operations Center (SOC) environment. I performed various network-level and host-based attacks against a Windows target, ingested the logs into Splunk, and used Wireshark for deep packet inspection.
 
 Network traffic analysis and SIEM detection were conducted in separate attack runs to focus on tool-specific visibility and detection capabilities.
