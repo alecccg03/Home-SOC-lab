@@ -5,6 +5,7 @@ Conducted separate network-level and log-based attack simulations to analyze det
 This lab demonstrates the end-to-end process of simulating cyber attacks, capturing telemetry, and analyzing data within a Security Operations Center (SOC) environment. I performed various network-level and host-based attacks against a Windows target, ingested the logs into Splunk, and used Wireshark for deep packet inspection.
 
 🛠️ Toolset
+
 SIEM: Splunk Enterprise (on Ubuntu VM)
 
 Telemetry: Sysmon (Windows Target), Splunk Universal Forwarder
@@ -16,7 +17,9 @@ Attack Tools: Nmap, Curl, SSH, ICMP
 Environment: VMware/VirtualBox (Isolated Lab Network)
 
 🛡️ Analysis Scenarios
+
 1. Nmap Stealth (SYN) Scan
+   
 The Attack: Executed a SYN scan (nmap -sS) to identify open ports without completing the three-way handshake.
 
 Wireshark Analysis: Observed a high volume of SYN packets followed by RST packets from the attacker to the target.
@@ -26,6 +29,7 @@ Splunk Detection: Created a dashboard to visualize spikes in destination ports p
 Query: index=sysmon EventCode=3 | stats dc(dest_port) by src_ip | where 'dc(dest_port)' > 50
 
 2. Failed SSH Brute Force
+   
 The Attack: Simulated connection attempts to port 22 on a closed service to observe "connection reset" behavior.
 
 Key Finding: Confirmed that failed connections to closed ports generate repetitive RST, ACK flags.
@@ -33,11 +37,13 @@ Key Finding: Confirmed that failed connections to closed ports generate repetiti
 Documentation: Verified that while a single failure is low-noise, automated attempts generate hundreds of logs in seconds.
 
 3. Web & ICMP Enumeration
+   
 The Attack: Used curl for web directory discovery and ping for host discovery.
 
 Analysis: Captured the 84-byte ICMP packets (Linux default) and analyzed the CommandLine arguments in Sysmon Event ID 1 to identify the specific curl strings used.
 
 📊 Dashboards & Visualizations
+
 I developed a Splunk dashboard to provide "at-a-glance" situational awareness:
 
 Top 10 Scanned Ports: Visualizing where the majority of SYN packets are landing.
