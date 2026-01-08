@@ -10,7 +10,7 @@ Network traffic analysis and SIEM detection were conducted in separate attack ru
 
 🛠️ **Toolset**
 
-SIEM: Splunk Enterprise 
+*SIEM:* Splunk Enterprise 
 
 *Telemetry:* Sysmon (Windows Target), Splunk Universal Forwarder
 
