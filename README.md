@@ -6,7 +6,7 @@ This lab demonstrates the end-to-end process of simulating cyber attacks, captur
 
 🛠️ Toolset
 
-SIEM: Splunk Enterprise (on Ubuntu VM)
+SIEM: Splunk Enterprise 
 
 Telemetry: Sysmon (Windows Target), Splunk Universal Forwarder
 
