@@ -30,7 +30,7 @@ Performed a SYN scan using nmap and analyzed the traffic in Wireshark.
    
 Performed a scan across the first 1000 ports to discover open services and analyzed in Wireshark.
 
-3. *Web & ICMP Enumeration*
+3. *Web Enumeration & ICMP Recon*
    
 Performed web directory and host discovery using curl and ping.
 
