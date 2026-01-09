@@ -5,6 +5,7 @@
 
 
 Src IP: 192.168.202.132
+
 Dst IP: 192.168.202.134
 
 ```bash
@@ -33,6 +34,7 @@ nmap -sS 192.168.202.134
 
 
 Src IP: 192.168.202.132
+
 Dst IP: 192.168.202.134
 
 ```bash
@@ -85,4 +87,5 @@ ping -c 10 192.168.202.134
 
 	This specific command generated 10 packets (-c 10). Sometimes it will only be a few like 3-4, but it can also be dozens or hundreds when using Nmap's ICMP scan.
 	
+
 	ICMP is normal, but a large volume of ICMP packets should be cause for suspicion
