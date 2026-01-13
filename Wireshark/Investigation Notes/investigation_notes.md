@@ -22,7 +22,7 @@ nmap -sS 192.168.202.134
 	
 *How many packets?*
 
-	An nmap scan can generate hundreds to thousands of packets. This one generated about 1900 packets.
+	An nmap scan can generate hundreds to thousands of packets. This one generated about 1900 packets because a lot of the ports were closed, resulting in about 2 packets for each port scanned: 1 SYN packet by the attacker and 1 RST by the target. If there were more open ports, it would result in more packets overall because the flow would then be: SYN packet by the attacker, SYN ACK by the target, and RST by the attacker, giving you three packets instead of only two.
 	
 *How is this different than normal browsing?*
 
@@ -89,3 +89,4 @@ ping -c 10 192.168.202.134
 	
 
 	ICMP is normal, but a large volume of ICMP packets should be cause for suspicion
+
