@@ -50,8 +50,3 @@ Developed a Splunk dashboard with multiple visualizations to better understand a
 
 *Visibility Gap:* This lab highlighted the importance of defense-in-depth by demonstrating how network traffic, endpoint logs and firewall telemetry provide different views of malicious activity.
 
-🚀 How to Use
-
-Splunk Queries: Check the queries.md file for all SPL used in the visualizations.
-
-Pcap Files: Sample traffic captures are located in the /pcaps directory.
