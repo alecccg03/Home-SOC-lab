@@ -1,0 +1,3 @@
+index=main (EventCode=4624 OR EventCode=4625) 
+| eval result=if(EventCode=4624, "Success", "Fail")
+| timechart span=5m count by result
