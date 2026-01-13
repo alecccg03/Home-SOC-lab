@@ -14,7 +14,7 @@ Network traffic analysis and SIEM detection were conducted in separate attack ru
 
 *Telemetry:* Sysmon (Windows Target), Splunk Universal Forwarder
 
-*Network Analysis:* Wireshark, TCPDump
+*Network Analysis:* Wireshark
 
 *Attack Tools:* Nmap, Curl, SSH, ICMP
 
