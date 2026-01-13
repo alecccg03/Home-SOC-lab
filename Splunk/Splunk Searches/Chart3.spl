@@ -1,2 +1,0 @@
-index=main (EventCode=4624 OR EventCode=4625)
-| timechart span=1m count by user
