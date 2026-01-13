@@ -18,7 +18,7 @@ Network traffic analysis and SIEM detection were conducted in separate attack ru
 
 *Attack Tools:* Nmap, Curl, SSH, ICMP
 
-*Environment:* VMware/VirtualBox (Isolated Lab Network) - Kali Linux VM (attacker), Windows VM (target)
+*Environment:* VMware (Isolated Lab Network) - Kali Linux VM (attacker), Windows VM (target)
 
 🛡️ **Analysis Scenarios**
 
