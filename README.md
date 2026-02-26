@@ -15,7 +15,7 @@ Network traffic analysis and SIEM detection were conducted in separate attack ru
 *Telemetry:* Sysmon (Windows Target), Splunk Universal Forwarder
 
 *Network Analysis:* Wireshark
-
+ 
 *Attack Tools:* Nmap, Curl, SSH, ICMP
 
 *Environment:* VMware (Isolated Lab Network) - Kali Linux VM (attacker), Windows VM (target)
